@@ -1,7 +1,7 @@
 # NTU-SC1015-Mini-Project
 Using Rainfall Prediction Data to Optimise Smart Water Sprinklers
 
-1. Data Collection & Cleaning
+2. Data Collection & Cleaning
 
 We've collected data of concern from the following sites, between the periods of Apr 2013 and Mar 2023 (10 Years)
 
@@ -10,9 +10,9 @@ We've collected data of concern from the following sites, between the periods of
 
 We then remove unnecessary columns from our csv files, and check for any null/negative values that may affect our data analysis and machine learning, before exporting our cleaned dataset for analysis.
 
-2. Exploratory Data Analysis
+3. Exploratory Data Analysis
 
-2a. Background Knowledge
+3a. Background Knowledge
 
 Singapore's rainfall distribution contains as annual trend, with high amount of rain around the period of 
 - Nov to Jan (NE Monsoon)
@@ -20,7 +20,7 @@ Singapore's rainfall distribution contains as annual trend, with high amount of 
 
 ![Monsoon](https://user-images.githubusercontent.com/128040899/233784067-8a0a8dad-642b-4350-b30a-33c763086054.jpg)
 
-2b. Studying Annual Trend
+3b. Studying Annual Trend
 
 ![Outliers](https://user-images.githubusercontent.com/128040899/233784190-92fd6915-3983-4703-a263-64f9c256a045.jpg)
 
@@ -36,7 +36,7 @@ After smoothing our dataset, we find it difficult to analyse the annual trend wh
 
 ![Average Monthly Rainfall](https://user-images.githubusercontent.com/128040899/233784222-278baddd-19bf-454b-9338-d1eb291b5095.jpg)
 
-2c. Correlation With Other Variables
+3c. Correlation With Other Variables
 
 ![CorrMatrix](https://user-images.githubusercontent.com/128040899/233784121-e7bf3238-d098-4599-9f6a-355a8cdde00b.jpg)
 
@@ -50,9 +50,9 @@ Note that this is not always the case, and we confirm our theory by checking the
 
 We then exported our dataset with outliers removed for Machine Learning.
 
-3. Machine Learning
+4. Machine Learning
 
-3a. Time Series Split
+4a. Time Series Split
 
 Since we are predicting into the future, our needs to learn the data's dependence on past observations to give us a better prediction. Hence we cannot split our data into train/test sets randomly like any typical linear regression problems. We've used SkLearn's Time Series Split to fulfill our purpose.
 
@@ -62,7 +62,7 @@ In Time Series Split, our dataset is spliced into N folds. Each fold contains a 
 
 After trying different number of folds for training, we've decided that 9 folds gave us the best model performance (RMSE) and most consistent performance across the folds.
 
-3b. Choice of Machine Learning
+4b. Choice of Machine Learning
 
 We noticed from our EDA that although our dataset contains a seasonal trend across each year, its pattern is not entirely consistent. For example, the rainfall is substantially low between Aug to Sep 2022 and high between Oct to Dec 2022, but high between Aug to Sep 2021 and slight lower in Oct to Dec 2021.
 
@@ -70,7 +70,7 @@ We noticed from our EDA that although our dataset contains a seasonal trend acro
 
 Due to these pattern discrepancies that have no linear relationship, we felt that Linear Regression may not give us a good prediction. Therefore, we've decided to employ eXtreme Gradient Boosting (or XGBoost) to tackle this problem. XGBoost uses multiple decision trees and gradient boosting to learn pattern differences in data, and is known to be effective when a dataset becomes complex or has nonlinear pattern. It also contains certain features that control overfitting of our data.
 
-3c. Smoothing Fluctuations in Train Data
+4c. Smoothing Fluctuations in Train Data
 
 ![Noisy](https://user-images.githubusercontent.com/128040899/233784239-abb5ba37-4d13-47a6-a985-354fee9533a9.jpg)
 
@@ -91,7 +91,7 @@ We've trained 4 different versions of dataset and obtained their RMSEs
 
 Seems like smoothing over 30 days gave us the best performance. We predicted SG's rainfall 1 year ahead from 1 Apr 23 (See Notebook for prediction graphs), but our time series graph does not look anything close to the one from EDA.
 
-3d. Adding Lagged Features
+4d. Adding Lagged Features
 
 As our rainfall data contains an annual trend, we'll need past values of the same period of prediction (known as lagged features) from our data for the model to capture this seasonal pattern and accurately predict future rainfall.
 
@@ -134,7 +134,7 @@ We concluded that adding temperatue and humidity did not improve our performance
 
 Note that in all our predictions, the performance of the 30 day smoothed sets tend to outperform their other counterparts, as indicated by their RMSE and the shape of their 1 year prediction graph (See Notebook for prediction graphs). We concluded that smoothing our train dataset over 30 days gives us the best prediction, as it removes all fluctuations that may affect our prediction within the month.
 
-3e. Testing Our Model on a Hypothetical Smart Water Sprinkler System
+4e. Testing Our Model on a Hypothetical Smart Water Sprinkler System
 
 Back to our problem motivation, we want to input these daily predicted values into our smart water sprinkler system. We've created a hypothetical smart water sprinkler system that has the following inputs and outputs.
 
@@ -153,18 +153,18 @@ In our example, we input 10mm as our crop's daily irrigation requirements. The s
 
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
-4. Area for Improvement
+5. Area for Improvement
 
 Our forecasted water requirements implied that it will rain everyday within the window of prediction. This may not be the case in reality, and it happened because we did a moving average of 30 days, effectively removing all zero values. To measure the probability of rain happening, we need other predictors such as clouds and wind movements. However, that will be another type of weather forecasting which is out of our project's scope.
 
-5. Takeaways from This Project
+6. Takeaways from This Project
 
 - During data collection, we noticed that Singapore experiences higher annual rainfall compared to countries in the tropical regions. This is because we are situated on the equator and around waters. Hence we expect our model to forecast higher water requirements for crops due to the decreased amount of rainfall in these countries.
 - Notice from our EDA that although Temperature and Humidity have correlation with Rainfall, adding them to our model did not improve its performance.  We then learnt that even if the temperature is low, there may be a lack of moisture in our atmosphere, an important ingredient for precipitation. Also, even as humidity is high, it simply means a high amount of moisture in the air, and does not guarantee high rainfall. Precipitation is also affected by convection activity which brings moisture up in the air, and condensation of water vapors forming clouds. These clouds then produce rain when the water droplets become too much for them to hold. 
 - Forecasting rainfall can have a wide range of applications beyond just benefitting agriculture. The ability to accurately predict rainfall patterns can aid in the strategic placement of reservoirs and hydroelectric power plants, which can have a significant impact on energy production. Additionally, accurate forecasting can help with flood control efforts by allowing the government to better prepare for potential flooding and mitigate its impacts efficiently. Lastly, it might benefit wildlife conservation efforts, as changes in rainfall patterns can affect natural habitats and ecosystems. Therefore, accurate rainfall forecasting can play an important role in decision-making for a variety of sectors beyond just agriculture.
 
 
-6. References
+7. References
 
 Meterological Service Singapore. Climate of Singapore
 www.weather.gov.sg/climate-climate-of-singapore/
