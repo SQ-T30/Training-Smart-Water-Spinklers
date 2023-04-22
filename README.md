@@ -18,8 +18,18 @@ We've collected data of concern from the following sites, between the periods of
 
 - (http://www.weather.gov.sg): 1) Daily Rainfall Total (mm), 2) Mean Temperature (°C)
 - (https://www.wunderground.com): 1) Average Humidity (%)
+- 
+![Info](https://user-images.githubusercontent.com/128040899/233806913-c80c9d1d-2098-4da3-bf35-c050b1531020.jpg)
 
-We then remove unnecessary columns from our csv files, and check for any null/negative values that may affect our data analysis and machine learning, before exporting our cleaned dataset for analysis.
+We then remove unnecessary columns from our csv files, leaving us with the columns of:
+
+![Columns](https://user-images.githubusercontent.com/128040899/233806889-74c37483-f56d-4d33-b9a7-65d157c348c2.jpg)
+
+We then checked for any null/negative values that may affect our data analysis and machine learning, 
+
+![Cleaning](https://user-images.githubusercontent.com/128040899/233806904-72f0abc9-ae14-47a2-a99e-35126c705ef9.jpg)
+
+before exporting our cleaned dataset for analysis.
 
 # 3. Exploratory Data Analysis
 
