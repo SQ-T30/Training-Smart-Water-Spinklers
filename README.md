@@ -1,12 +1,10 @@
-# NTU-SC1015-Mini-Project
+# Forecasting Rainfall to Optimise Smart Water Sprinklers
 
 Collaborators
 - Aaron Toh Sheng Rong: Problem Motivation, Data Collection, Presentation
 - Teo Shao Qi: EDA, Machine Learning
 
-Forecasting Rainfall to Optimise Smart Water Sprinklers
-
-1. Problem Motivation
+# 1. Problem Motivation
 
 Water is a precious and finite resource, especially in Singapore, where the island-city state faces a constant struggle to ensure that its population has access to clean and safe water. With only 1% of its land area used for collecting rainwater, Singapore has to rely heavily on imported water from neighboring countries, such as Malaysia. However, this reliance on imported water has proven to be a precarious and unreliable solution, as it exposes Singapore to potential geopolitical risks and supply disruptions. To make matters worse, Singapore's water demand is expected to double by 2060, putting an enormous strain on its already limited water supply. Furthermore, Singapore experienced its worst drought in 2018, which led to a 30% decrease in local water production, forcing the government to ramp up its water supply from Malaysia. And If Singapore fails to improve water efficiency and diversify its water sources, experts have estimated that it will face a water scarcity challenge by 2030. Moreover, Singapore is also one of the most water-stressed countries globally, and this situation is expected to worsen due to climate change and population growth, according to a report by the World Wildlife Fund (WWF). Furthermore, a water shortage could have devastating consequences for Singapore's economy, which relies heavily on industries that require large amounts of water, such as manufacturing and shipping. Therefore, these data illustrate the pressing need for water conservation in Singapore and the potential consequences if we fail to do so. That's why the topic of conserving water in Singapore is so crucial. NEWater, ultra-clean, high-grade reclaimed water produced from wastewater, currently meets up to 40% of Singapore's water demand, and this is expected to increase to 55% by 2060. Therefore, conserving water in Singapore isn't just a matter of being mindful of our water consumption; it's a matter of survival and securing our future water supply. Every drop counts, and each of us can make a significant difference in preserving this precious resource that sustains us all.
 
@@ -14,7 +12,7 @@ Conserving water in Singapore is critical to ensuring a sustainable water supply
 
 We'll discussing how weather forecasting can be used to help smart water sprinklers conserve water. We will be collecting rainfall data from April 2013 to March 2023, to develop a model for predicting and forecasting future rainfall. By analyzing the past rainfall data, we aim to uncover patterns and trends that will help us create a more accurate model for predicting future rainfall. With this information, we can make informed decisions about water usage and conservation, and ensure that we are prepared for any weather changes that may affect our operations. For instance, if the weather forecast predicts rainfall, the sprinklers can be programmed to skip the next watering session. This approach helps to conserve water by ensuring that the plants receive only the water they need. By using weather forecasting to guide smart water sprinklers, we can reduce our water usage and conserve this precious resource for future generations.
 
-2. Data Collection & Cleaning
+# 2. Data Collection & Cleaning
 
 We've collected data of concern from the following sites, between the periods of Apr 2013 and Mar 2023 (10 Years)
 
@@ -23,7 +21,7 @@ We've collected data of concern from the following sites, between the periods of
 
 We then remove unnecessary columns from our csv files, and check for any null/negative values that may affect our data analysis and machine learning, before exporting our cleaned dataset for analysis.
 
-3. Exploratory Data Analysis
+# 3. Exploratory Data Analysis
 
 3a. Background Knowledge
 
@@ -63,7 +61,7 @@ Note that this is not always the case, and we confirm our theory by checking the
 
 We then exported our dataset with outliers removed for Machine Learning.
 
-4. Machine Learning
+# 4. Machine Learning
 
 4a. Time Series Split
 
@@ -166,18 +164,18 @@ In our example, we input 10mm as our crop's daily irrigation requirements. The s
 
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
-5. Area for Improvement
+# 5. Area for Improvement
 
 Our forecasted water requirements implied that it will rain everyday within the window of prediction. This may not be the case in reality, and it happened because we did a moving average of 30 days, effectively removing all zero values. To measure the probability of rain happening, we need other predictors such as clouds and wind movements. However, that will be another type of weather forecasting which is out of our project's scope.
 
-6. Takeaways from This Project
+# 6. Takeaways from This Project
 
 - During data collection, we noticed that Singapore experiences higher annual rainfall compared to countries in the tropical regions. This is because we are situated on the equator and around waters. Hence we expect our model to forecast higher water requirements for crops due to the decreased amount of rainfall in these countries.
 - Notice from our EDA that although Temperature and Humidity have correlation with Rainfall, adding them to our model did not improve its performance.  We then learnt that even if the temperature is low, there may be a lack of moisture in our atmosphere, an important ingredient for precipitation. Also, even as humidity is high, it simply means a high amount of moisture in the air, and does not guarantee high rainfall. Precipitation is also affected by convection activity which brings moisture up in the air, and condensation of water vapors forming clouds. These clouds then produce rain when the water droplets become too much for them to hold. 
 - Forecasting rainfall can have a wide range of applications beyond just benefitting agriculture. The ability to accurately predict rainfall patterns can aid in the strategic placement of reservoirs and hydroelectric power plants, which can have a significant impact on energy production. Additionally, accurate forecasting can help with flood control efforts by allowing the government to better prepare for potential flooding and mitigate its impacts efficiently. Lastly, it might benefit wildlife conservation efforts, as changes in rainfall patterns can affect natural habitats and ecosystems. Therefore, accurate rainfall forecasting can play an important role in decision-making for a variety of sectors beyond just agriculture.
 
 
-7. References
+# 7. References
 
 Meterological Service Singapore. Climate of Singapore
 www.weather.gov.sg/climate-climate-of-singapore/
