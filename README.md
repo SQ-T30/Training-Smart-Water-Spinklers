@@ -136,10 +136,12 @@ Seemed like M-9 smoothed over 30 days gave us the best performance. We then adde
 - (Y-5) Unsmoothed: 13.17, Smoothed 7 Days: 12.19, Smoothed 15 Days: 11.50, Smoothed 30 Days: 11.16
 - (Y-7) Unsmoothed: 13.26, Smoothed 7 Days: 12.22, Smoothed 15 Days: 11.53, Smoothed 30 Days: 11.13
 
+Seemed like Y-7 smoothed over 30 days gave us the best performance. Let's see our 1 year prediction graph now.
+
 ![Yearly Prediction A](https://user-images.githubusercontent.com/128040899/233784264-c8680d11-dda3-49e1-8688-d886fd43f6f8.jpg)
 ![Yearly Prediction B](https://user-images.githubusercontent.com/128040899/233784265-df390f9a-9e9a-4e40-9204-1eeb53e6a0c9.jpg)
 
-Seemed like Y-7 smoothed over 30 days gave us the best performance. Also, our 1 year prediction graph looks closer to the one from our EDA when we added lagged features. We then added temperature to see if our model performance improves:
+The graph looks closer to the one from our EDA when we added lagged features. We then added temperature to see if our model performance improves:
 
 - Unsmoothed: 13.60, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.19
 
