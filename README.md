@@ -18,21 +18,35 @@ Singapore's rainfall distribution contains as annual trend, with high amount of 
 - Nov to Jan (NE Monsoon)
 - May to Jul (SW Monsoon)
 
+![Monsoon](https://user-images.githubusercontent.com/128040899/233784067-8a0a8dad-642b-4350-b30a-33c763086054.jpg)
+
 2b. Studying Annual Trend
+
+![Outliers](https://user-images.githubusercontent.com/128040899/233784190-92fd6915-3983-4703-a263-64f9c256a045.jpg)
 
 We then analyse our time series data for this trend. First we removed outliers that may affect our analysis. We've identified outliers to be daily rainfall observations exceeding 100mm.
 
+![Outliers Removed](https://user-images.githubusercontent.com/128040899/233784198-590723e9-c618-40e6-93de-c127c01dfb54.jpg)
+
 We saw that our dataset contains fluctuations in daily rainfall that adds no meaning to the annual trend. We considered this fluctuations as "noises", and used a moving average of 30 day window to smooth out this noise and help us analyse our data better.
+
+![Smoothed](https://user-images.githubusercontent.com/128040899/233784210-80f4673c-a69f-4e61-81d8-492ea1a4f784.jpg)
 
 After smoothing our dataset, we find it difficult to analyse the annual trend when data from all observations are clustered together. We used box plots to represent average daily rainfalls across different months of a year. From the boxplots, we observed that rainfalls are marginally high between Apr and Jun and notably high between Nov and Dec, which closely resembles to annual trend we saw from our background information.
 
+![Average Monthly Rainfall](https://user-images.githubusercontent.com/128040899/233784222-278baddd-19bf-454b-9338-d1eb291b5095.jpg)
+
 2c. Correlation With Other Variables
+
+![CorrMatrix](https://user-images.githubusercontent.com/128040899/233784121-e7bf3238-d098-4599-9f6a-355a8cdde00b.jpg)
 
 We then study the correlationship of other variables (Temperature and Humidity) in our dataset with rainfall, and observed this general behaviour:
 - As Mean Temperature ↓, Rainfall ↑
 - As Mean Humidity ↑, Rainfall ↑
 
 Note that this is not always the case, and we confirm our theory by checking their graphical representation using pairplots. We saw that there may be days when Mean Temperature is low, but Rainfall is low as well. The same can be said for Mean Humidity.
+
+![PairPlot](https://user-images.githubusercontent.com/128040899/233784130-53f2ac1c-3131-428f-8c85-4219b779cce0.jpg)
 
 We then exported our dataset with outliers removed for Machine Learning.
 
@@ -42,6 +56,8 @@ We then exported our dataset with outliers removed for Machine Learning.
 
 Since we are predicting into the future, our needs to learn the data's dependence on past observations to give us a better prediction. Hence we cannot split our data into train/test sets randomly like any typical linear regression problems. We've used SkLearn's Time Series Split to fulfill our purpose.
 
+![KFoldVSTimeSeriesSplit](https://user-images.githubusercontent.com/128040899/233784143-2e9e1770-f5bb-4309-bf5c-63a8cfe9240b.png)
+
 In Time Series Split, our dataset is spliced into N folds. Each fold contains a train dataset of increased time interval from the previous fold, and a test set with fixed time interval (1 Year in our context). Each fold other than the 1st one successively trains the test dataset of the previous fold to learn their dependence of past observations. Note that this is different from K-Fold Cross Validation, which splits data into K random folds, and uses the (K+1) Fold as the test set on each split. The train set of each fold also has a fixed time interval, unlike the one from Time Series Fold.
 
 After trying different number of folds for training, we've decided that 9 folds gave us the best model performance (RMSE) and most consistent performance across the folds.
@@ -50,11 +66,17 @@ After trying different number of folds for training, we've decided that 9 folds 
 
 We noticed from our EDA that although our dataset contains a seasonal trend across each year, its pattern is not entirely consistent. For example, the rainfall is substantially low between Aug to Sep 2022 and high between Oct to Dec 2022, but high between Aug to Sep 2021 and slight lower in Oct to Dec 2021.
 
+![Pattern](https://user-images.githubusercontent.com/128040899/233784167-8a306437-62c9-41e6-bd4c-7e5c1191e656.jpg)
+
 Due to these pattern discrepancies that have no linear relationship, we felt that Linear Regression may not give us a good prediction. Therefore, we've decided to employ eXtreme Gradient Boosting (or XGBoost) to tackle this problem. XGBoost uses multiple decision trees and gradient boosting to learn pattern differences in data, and is known to be effective when a dataset becomes complex or has nonlinear pattern. It also contains certain features that control overfitting of our data.
 
 3c. Smoothing Fluctuations in Train Data
 
+![Noisy](https://user-images.githubusercontent.com/128040899/233784239-abb5ba37-4d13-47a6-a985-354fee9533a9.jpg)
+
 Recall from the EDA section that our dataset is noisy due to daily rainfall fluctuations, and these noises does not add any meaning to our prediction. We've used the same moving average technique from EDA on our train data, to monitor how our model performs throughout the training. We've also tried averaging over windows of 7, 15 and 30 days to see which window gives us the best performance. (As we are studying seasonal trend across different months, averaging beyond 30 days will change the seasonal trend of our dataset)
+
+![Smoothing](https://user-images.githubusercontent.com/128040899/233784244-c20da88b-8ae0-4c3a-878d-085d7ca17ff1.jpg)
 
 (Caution: As we are evaluating our test data's performance, we must use actual data for the test set and not smooth them out. Otherwise we would be deceiving ourselves with the results.)
 
@@ -63,6 +85,9 @@ We've trained 4 different versions of dataset and obtained their RMSEs
 - Smoothed over 7 Days (RMSE: 11.82)
 - Smoothed over 15 Days (RMSE: 11.50)
 - Smoothed over 30 Days (RMSE: 11.35)
+
+![No Lag Graph A](https://user-images.githubusercontent.com/128040899/233784252-33fedae7-35a6-47ec-b5c5-a17c57b3bd6a.jpg)
+![No Lag Graph B](https://user-images.githubusercontent.com/128040899/233784255-f4729d0d-43b7-4169-9fcb-dfe94049af12.jpg)
 
 Seems like smoothing over 30 days gave us the best performance. We predicted SG's rainfall 1 year ahead from 1 Apr 23 (See Notebook for prediction graphs), but our time series graph does not look anything close to the one from EDA.
 
@@ -89,6 +114,9 @@ Seemed like M-9 smoothed over 30 days gave us the best performance. We then adde
 - (Y-3) Unsmoothed: 13.18, Smoothed 7 Days: 12.21, Smoothed 15 Days: 11.54, Smoothed 30 Days: 11.16
 - (Y-5) Unsmoothed: 13.17, Smoothed 7 Days: 12.19, Smoothed 15 Days: 11.50, Smoothed 30 Days: 11.16
 - (Y-7) Unsmoothed: 13.26, Smoothed 7 Days: 12.22, Smoothed 15 Days: 11.53, Smoothed 30 Days: 11.13
+
+![Yearly Prediction A](https://user-images.githubusercontent.com/128040899/233784264-c8680d11-dda3-49e1-8688-d886fd43f6f8.jpg)
+![Yearly Prediction B](https://user-images.githubusercontent.com/128040899/233784265-df390f9a-9e9a-4e40-9204-1eeb53e6a0c9.jpg)
 
 Seemed like Y-7 smoothed over 30 days gave us the best performance. Also, our 1 year prediction graph looks closer to the one from our EDA when we added lagged features. We then added temperature to see if our model performance improves:
 
@@ -118,8 +146,12 @@ Inputs
 Outputs
 
     Residual water requirements adjusted for predicted rainfall.
+    
+ ![Ask](https://user-images.githubusercontent.com/128040899/233784279-b6433ce5-f5c9-4a9e-837e-bac301c94a5f.jpg)
 
 In our example, we input 10mm as our crop's daily irrigation requirements. The smart sprinkler system forecasted a daily water requirement of ~3.8mm for the 1st week of Apr to supplement daily rainfall (See Notebook for bar charts on other forecasting windows). Through this Hypothetical Sprinkler System, we've discovered that we can save more water if a sprinkler system has informed data on the irrigation requirements for crops, rather than operating solely based on human commands.
+
+![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
 4. Area for Improvement
 
