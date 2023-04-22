@@ -4,7 +4,7 @@ Collaborators
 - Aaron Toh Sheng Rong: Problem Motivation, Data Collection, Presentation
 - Teo Shao Qi: EDA, Machine Learning
 
-Using Rainfall Prediction Data to Optimise Smart Water Sprinklers
+Forecasting Rainfall to Optimise Smart Water Sprinklers
 
 1. Problem Motivation
 
