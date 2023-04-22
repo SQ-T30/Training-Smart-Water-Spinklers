@@ -72,35 +72,35 @@ As our rainfall data contains an annual trend, we'll need past values of the sam
 
 We began by adding days (D-3, D-7, D-14, D-28) as our lagged features, and obtained the following RMSEs:
 
-(D-3) Unsmoothed: 12.87, Smoothed 7 days: 12.31, Smoothed 15 days: 11.70, Smoothed 30 days: 11.27
-(D-7) Unsmoothed: 13.03, Smoothed 7 days: 13.39, Smoothed 15 days: 11.71, Smoothed 30 days: 11.45
-(D-14) Unsmoothed: 12.87, Smoothed 7 days: 12.79, Smoothed 15 days: 11.85, Smoothed 30 days: 11.43
-(D-28) Unsmoothed: 12.72, Smoothed 7 days: 12.81, Smoothed 15 days: 12.08, Smoothed 30 days: 11.36
+- (D-3) Unsmoothed: 12.87, Smoothed 7 days: 12.31, Smoothed 15 days: 11.70, Smoothed 30 days: 11.27
+- (D-7) Unsmoothed: 13.03, Smoothed 7 days: 13.39, Smoothed 15 days: 11.71, Smoothed 30 days: 11.45
+- (D-14) Unsmoothed: 12.87, Smoothed 7 days: 12.79, Smoothed 15 days: 11.85, Smoothed 30 days: 11.43
+- (D-28) Unsmoothed: 12.72, Smoothed 7 days: 12.81, Smoothed 15 days: 12.08, Smoothed 30 days: 11.36
 
 Seemed like D-3 smoothed over 30 days gave us the best performance. We then added months to see if our model performance improves:
 
-(M-3) Unsmoothed: 12.98, Smoothed 7 Days: 12.24, Smoothed 15 Days: 11.62, Smoothed 30 Days: 11.21
-(M-6) Unsmoothed: 13.01, Smoothed 7 Days: 12.16, Smoothed 15 Days: 11.58, Smoothed 30 Days: 11.18
-(M-9) Unsmoothed: 13.05, Smoothed 7 Days: 12.23, Smoothed 15 Days: 11.52, Smoothed 30 Days: 11.15
-(M-12) Unsmoothed: 13.31, Smoothed 7 Days: 12.19, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.17
+- (M-3) Unsmoothed: 12.98, Smoothed 7 Days: 12.24, Smoothed 15 Days: 11.62, Smoothed 30 Days: 11.21
+- (M-6) Unsmoothed: 13.01, Smoothed 7 Days: 12.16, Smoothed 15 Days: 11.58, Smoothed 30 Days: 11.18
+- (M-9) Unsmoothed: 13.05, Smoothed 7 Days: 12.23, Smoothed 15 Days: 11.52, Smoothed 30 Days: 11.15
+- (M-12) Unsmoothed: 13.31, Smoothed 7 Days: 12.19, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.17
 
 Seemed like M-9 smoothed over 30 days gave us the best performance. We then added years to see if our model performance improves:
 
-(Y-3) Unsmoothed: 13.18, Smoothed 7 Days: 12.21, Smoothed 15 Days: 11.54, Smoothed 30 Days: 11.16
-(Y-5) Unsmoothed: 13.17, Smoothed 7 Days: 12.19, Smoothed 15 Days: 11.50, Smoothed 30 Days: 11.16
-(Y-7) Unsmoothed: 13.26, Smoothed 7 Days: 12.22, Smoothed 15 Days: 11.53, Smoothed 30 Days: 11.13
+- (Y-3) Unsmoothed: 13.18, Smoothed 7 Days: 12.21, Smoothed 15 Days: 11.54, Smoothed 30 Days: 11.16
+- (Y-5) Unsmoothed: 13.17, Smoothed 7 Days: 12.19, Smoothed 15 Days: 11.50, Smoothed 30 Days: 11.16
+- (Y-7) Unsmoothed: 13.26, Smoothed 7 Days: 12.22, Smoothed 15 Days: 11.53, Smoothed 30 Days: 11.13
 
 Seemed like Y-7 smoothed over 30 days gave us the best performance. Also, our 1 year prediction graph looks closer to the one from our EDA when we added lagged features. We then added temperature to see if our model performance improves:
 
-Unsmoothed: 13.60, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.19
+- Unsmoothed: 13.60, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.19
 
 Adding temperature did not improve our performance. Let's see if adding humidity does:
 
-Unsmoothed: 12.78, Smoothed 7 Days: 12.02, Smoothed 15 Days: 11.46, Smoothed 30 Days: 11.20
+- Unsmoothed: 12.78, Smoothed 7 Days: 12.02, Smoothed 15 Days: 11.46, Smoothed 30 Days: 11.20
 
 Adding humidity did not improve our performance either. Let's see if adding both temperature & humidity does:
 
-Unsmoothed: 12.96, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.47, Smoothed 30 Days: 11.20
+- Unsmoothed: 12.96, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.47, Smoothed 30 Days: 11.20
 
 We concluded that adding temperatue and humidity did not improve our performance.
 
