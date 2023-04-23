@@ -25,11 +25,13 @@ We then remove unnecessary columns from our csv files, leaving us with the colum
 
 ![Columns](https://user-images.githubusercontent.com/128040899/233806889-74c37483-f56d-4d33-b9a7-65d157c348c2.jpg)
 
-We then checked for any null/negative values that may affect our data analysis and machine learning, 
+We also saw that all columns other than Year/Month/Day are numerical columns. We then checked for any null/negative values that may affect our data analysis and machine learning, 
 
 ![Cleaning](https://user-images.githubusercontent.com/128040899/233806904-72f0abc9-ae14-47a2-a99e-35126c705ef9.jpg)
 
-before exporting our cleaned dataset for analysis.
+We then combined Year/Month/Day columns into 1 date column and set it as our new index, before exporting our cleaned dataset for analysis.
+
+![Index](https://user-images.githubusercontent.com/128040899/233838985-d6e4c909-3bb8-44b2-a96f-a6ab51268e5e.jpg)
 
 # 3. Exploratory Data Analysis
 
