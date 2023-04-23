@@ -55,7 +55,7 @@ We saw that our dataset contains fluctuations in daily rainfall that adds no mea
 
 ![Smoothed](https://user-images.githubusercontent.com/128040899/233784210-80f4673c-a69f-4e61-81d8-492ea1a4f784.jpg)
 
-After smoothing our dataset, we find it difficult to analyse the annual trend when data from all observations are clustered together. We used box plots to represent average daily rainfalls across different months of a year. From the boxplots, we observed that rainfalls are marginally high between Apr and Jun and notably high between Nov and Dec, which closely resembles to annual trend we saw from our background information.
+After smoothing our dataset, we find it difficult to analyse the annual trend when data from all observations are clustered together. We used box plots to represent average daily rainfalls across different months of a year. From the boxplots, we observed that rainfalls are marginally high between Apr and Jun and notably high between Nov and Dec, which closely resembles to annual trend we saw from our background information. Note that we've removed outliers from the boxplots as they do not add any value to our analysis.
 
 ![Average Monthly Rainfall](https://user-images.githubusercontent.com/128040899/233784222-278baddd-19bf-454b-9338-d1eb291b5095.jpg)
 
