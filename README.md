@@ -83,7 +83,7 @@ In Time Series Split, our dataset is spliced into N folds. Each fold contains a 
 
 After trying different number of folds for training, we've decided that 9 folds gave us the best model performance (RMSE) and most consistent performance across the folds.
 
-4b. Choice of Machine Learning
+4b. Choice of Machine Learning Model
 
 We noticed from our EDA that although our dataset contains a seasonal trend across each year, its pattern is not entirely consistent. For example, the rainfall is substantially low between Aug to Sep 2022 and high between Oct to Dec 2022, but high between Aug to Sep 2021 and slight lower in Oct to Dec 2021.
 
@@ -141,7 +141,7 @@ Seemed like Y-7 smoothed over 30 days gave us the best performance. Let's see ou
 ![Yearly Prediction A](https://user-images.githubusercontent.com/128040899/233784264-c8680d11-dda3-49e1-8688-d886fd43f6f8.jpg)
 ![Yearly Prediction B](https://user-images.githubusercontent.com/128040899/233784265-df390f9a-9e9a-4e40-9204-1eeb53e6a0c9.jpg)
 
-The graph of the 30 day smoothed window lookws closer to the one from our EDA when we added lagged features. We then added temperature to see if our model performance improves:
+The graph of the 30 day smoothed window lookws closer to the one from our EDA when we added lagged features, which higher rainfall in the months of Nov to Dec. We then added temperature to see if our model performance improves:
 
 - Unsmoothed: 13.60, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.19
 
@@ -178,7 +178,7 @@ In our example, we input 10mm as our crop's daily irrigation requirements. The s
 
 # 5. Area for Improvement
 
-Our forecasted water requirements implied that it will rain everyday within the window of prediction. This may not be the case in reality, and it happened because we did a moving average of 30 days, effectively removing all zero values. To measure the probability of rain happening, we need other predictors such as clouds and wind movements. However, that will be another type of weather forecasting which is out of our project's scope.
+Our forecasted water requirements implied that it will rain everyday within the window of prediction. This may not be the case in reality, and it happened because we did a moving average of 30 days, effectively removing all zero values in our training set. To measure the probability of rain happening, we need other predictors such as clouds and wind movements. However, that will be another type of weather forecasting which is out of our project's scope.
 
 # 6. Takeaways from This Project
 
