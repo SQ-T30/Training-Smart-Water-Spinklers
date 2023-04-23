@@ -91,7 +91,7 @@ We noticed from our EDA that although our dataset contains a seasonal trend acro
 
 ![Pattern](https://user-images.githubusercontent.com/128040899/233784167-8a306437-62c9-41e6-bd4c-7e5c1191e656.jpg)
 
-Due to these pattern discrepancies that have no linear relationship, we felt that Linear Regression may not give us a good prediction. Therefore, we've decided to employ eXtreme Gradient Boosting (or XGBoost) to tackle this problem. XGBoost uses multiple decision trees and gradient boosting to learn pattern differences in data, and is known to be effective when a dataset becomes complex or has nonlinear pattern. It also contains certain features that control overfitting of our data.
+Due to these pattern discrepancies that have no linear relationship, we felt that Linear Regression may not give us a good prediction. Therefore, we've decided to employ eXtreme Gradient Boosting (or XGBoost) to tackle this problem. XGBoost works by iteratively adding decision trees (known as boosting rounds) and using gradient boosting to correct errors and learn pattern differences in data. It also contains certain features that control overfitting of our data, such as limiting the depth of a tree and setting early stopping rounds when our model performance does not improve. It is known to be effective when a dataset becomes complex or has nonlinear pattern. 
 
 4c. Smoothing Fluctuations in Train Data
 
