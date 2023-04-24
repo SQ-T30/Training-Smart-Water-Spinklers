@@ -120,15 +120,17 @@ Seemed like Y-7 smoothed over 30 days gave us the best performance. Let's see ou
 
 ![Yearly Prediction B](https://user-images.githubusercontent.com/128040899/233784265-df390f9a-9e9a-4e40-9204-1eeb53e6a0c9.jpg)
 
-The graph of the 30 day smoothed window lookws closer to the one from our EDA when we added lagged features, which higher rainfall in the months of Nov to Dec. We then added temperature to see if our model performance improves:
+The graph of the 30 day smoothed window lookws closer to the one from our EDA when we added lagged features, which higher rainfall in the months of Nov to Dec. We then added temperature/humidity/temperature & humidity to see if our model performance improves:
+
+Temperature:
 
 - Unsmoothed: 13.60, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.57, Smoothed 30 Days: 11.19
 
-Adding temperature did not improve our performance. Let's see if adding humidity does:
+Humidity:
 
 - Unsmoothed: 12.78, Smoothed 7 Days: 12.02, Smoothed 15 Days: 11.46, Smoothed 30 Days: 11.20
 
-Adding humidity did not improve our performance either. Let's see if adding both temperature & humidity does:
+Temperature & Humidity:
 
 - Unsmoothed: 12.96, Smoothed 7 Days: 11.96, Smoothed 15 Days: 11.47, Smoothed 30 Days: 11.20
 
