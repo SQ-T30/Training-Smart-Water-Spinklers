@@ -14,7 +14,7 @@ We'll discussing how weather forecasting can be used to help smart water sprinkl
 
 # 2. Data Collection & Cleaning
 
-We've collected data of concern from the following sites, between the periods of Apr 2013 and Mar 2023 (10 Years)
+We've collected data of concern from the following sites, between the periods of Apr 2013 and Mar 2023
 
 1) Daily Rainfall Total (mm)
 2) Mean Temperature (°C)
