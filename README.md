@@ -19,8 +19,6 @@ We've collected data of concern from the following sites, between the periods of
 - (http://www.weather.gov.sg): 1) Daily Rainfall Total (mm), 2) Mean Temperature (°C)
 - (https://www.wunderground.com): 1) Average Humidity (%)
 
-![Info](https://user-images.githubusercontent.com/128040899/233806913-c80c9d1d-2098-4da3-bf35-c050b1531020.jpg)
-
 We then remove unnecessary columns from our csv files, leaving us with the columns of:
 
 ![Columns](https://user-images.githubusercontent.com/128040899/233806889-74c37483-f56d-4d33-b9a7-65d157c348c2.jpg)
