@@ -6,26 +6,25 @@ Collaborators
 
 # 1. Problem Motivation
 
-Water is a precious and finite resource, especially in Singapore, where the island-city state faces a constant struggle to ensure that its population has access to clean and safe water. With only 1% of its land area used for collecting rainwater, Singapore has to rely heavily on imported water from neighboring countries, such as Malaysia. However, this reliance on imported water has proven to be a precarious and unreliable solution, as it exposes Singapore to potential geopolitical risks and supply disruptions. To make matters worse, Singapore's water demand is expected to double by 2060, putting an enormous strain on its already limited water supply. Furthermore, Singapore experienced its worst drought in 2018, which led to a 30% decrease in local water production, forcing the government to ramp up its water supply from Malaysia. And If Singapore fails to improve water efficiency and diversify its water sources, experts have estimated that it will face a water scarcity challenge by 2030. Moreover, Singapore is also one of the most water-stressed countries globally, and this situation is expected to worsen due to climate change and population growth, according to a report by the World Wildlife Fund (WWF). Furthermore, a water shortage could have devastating consequences for Singapore's economy, which relies heavily on industries that require large amounts of water, such as manufacturing and shipping. Therefore, these data illustrate the pressing need for water conservation in Singapore and the potential consequences if we fail to do so. That's why the topic of conserving water in Singapore is so crucial. NEWater, ultra-clean, high-grade reclaimed water produced from wastewater, currently meets up to 40% of Singapore's water demand, and this is expected to increase to 55% by 2060. Therefore, conserving water in Singapore isn't just a matter of being mindful of our water consumption; it's a matter of survival and securing our future water supply. Every drop counts, and each of us can make a significant difference in preserving this precious resource that sustains us all.
+Water is precious and finite, especially in Singapore. With only 1% of its land area used for collecting rainwater, Singapore has to rely heavily on imported water from neighboring countries, such as Malaysia. However, this reliance on imported water has proven to be precarious and unreliable. If Singapore fails to improve water efficiency and diversify its water sources, experts have estimated that it will face a water scarcity challenge by 2030.  
 
-Conserving water in Singapore is critical to ensuring a sustainable water supply for our future generations. With our limited water supply and growing water demand, we must explore every avenue to optimise our water usage. Smart irrigation techniques, such as drip irrigation and weather-based controllers, can significantly reduce water wastage in landscaping and agriculture by adjusting watering schedules based on weather forecasts. One way we can do this is by predicting rainfall and guiding smart water sprinklers to reduce water usage. By using tools such as weather forecasting, soil moisture sensors, evapotranspiration controllers, and rain sensors, we can better predict rainfall and adjust our watering schedules accordingly. This will not only reduce our water consumption but also prevent overwatering and water waste. Therefore, by conserving water and adopting sustainable water-saving habits, we can contribute towards a brighter and more secure water future for Singapore.
+With limited water supply and growing water demand, we must explore every avenue to optimise our water usage. Smart irrigation techniques, such as drip irrigation and weather-based controllers, can significantly reduce water wastage in landscaping and agriculture by adjusting watering schedules based on weather forecasts. One way we can do this is by predicting rainfall and guiding smart water sprinklers to reduce water usage. 
 
-We'll discussing how weather forecasting can be used to help smart water sprinklers conserve water. We will be collecting rainfall data from April 2013 to March 2023, to develop a model for predicting and forecasting future rainfall. By analyzing the past rainfall data, we aim to uncover patterns and trends that will help us create a more accurate model for predicting future rainfall. With this information, we can make informed decisions about water usage and conservation, and ensure that we are prepared for any weather changes that may affect our operations. For instance, if the weather forecast predicts rainfall, the sprinklers can be programmed to skip the next watering session. This approach helps to conserve water by ensuring that the plants receive only the water they need. By using weather forecasting to guide smart water sprinklers, we can reduce our water usage and conserve this precious resource for future generations.
+We'll discussing how weather forecasting can be used to help smart water sprinklers conserve water. By analyzing the past rainfall data, we aim to uncover patterns and trends that will help us create a more accurate model for predicting future rainfall. By using predicted rainfall data to guide smart water sprinklers, we can reduce our water usage and conserve this precious resource for future generations.
 
 # 2. Data Collection & Cleaning
 
 We've collected data of concern from the following sites, between the periods of Apr 2013 and Mar 2023 (10 Years)
 
-- (http://www.weather.gov.sg): 1) Daily Rainfall Total (mm), 2) Mean Temperature (°C)
-- (https://www.wunderground.com): 1) Average Humidity (%)
+1) Daily Rainfall Total (mm)
+2) Mean Temperature (°C)
+3) Average Humidity (%)
 
 We then remove unnecessary columns from our csv files, leaving us with the columns of:
 
 ![Columns](https://user-images.githubusercontent.com/128040899/233806889-74c37483-f56d-4d33-b9a7-65d157c348c2.jpg)
 
-We also saw that all columns other than Year/Month/Day are numerical columns. We then checked for any null/negative values that may affect our data analysis and machine learning, 
-
-We then combined Year/Month/Day columns into 1 date column and set it as our new index, before exporting our cleaned dataset for analysis.
+We then exported our cleaned dataset for analysis.
 
 # 3. Exploratory Data Analysis
 
@@ -119,7 +118,6 @@ Seemed like M-9 smoothed over 30 days gave us the best performance. We then adde
 
 Seemed like Y-7 smoothed over 30 days gave us the best performance. Let's see our 1 year prediction graph now.
 
-![Yearly Prediction A](https://user-images.githubusercontent.com/128040899/233784264-c8680d11-dda3-49e1-8688-d886fd43f6f8.jpg)
 ![Yearly Prediction B](https://user-images.githubusercontent.com/128040899/233784265-df390f9a-9e9a-4e40-9204-1eeb53e6a0c9.jpg)
 
 The graph of the 30 day smoothed window lookws closer to the one from our EDA when we added lagged features, which higher rainfall in the months of Nov to Dec. We then added temperature to see if our model performance improves:
@@ -136,7 +134,7 @@ Adding humidity did not improve our performance either. Let's see if adding both
 
 We concluded that adding temperatue and humidity did not improve our performance.
 
-Note that in all our predictions, the performance of the 30 day smoothed sets tend to outperform their other counterparts, as indicated by their RMSE and the shape of their 1 year prediction graph (See Notebook for prediction graphs). We concluded that smoothing our train dataset over 30 days gives us the best prediction, as it removes all fluctuations that may affect our prediction within the month.
+The performance of all the 30 day smoothed sets tend to outperform their other counterparts, as indicated by their RMSE and the shape of their 1 year prediction graph (See Notebook for prediction graphs). We concluded that smoothing our train dataset over 30 days gives us the best prediction, as it removes all fluctuations that may affect our prediction within the month.
 
 4e. Testing Our Model on a Hypothetical Smart Water Sprinkler System
 
