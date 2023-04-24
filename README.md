@@ -27,11 +27,7 @@ We then remove unnecessary columns from our csv files, leaving us with the colum
 
 We also saw that all columns other than Year/Month/Day are numerical columns. We then checked for any null/negative values that may affect our data analysis and machine learning, 
 
-![Cleaning](https://user-images.githubusercontent.com/128040899/233806904-72f0abc9-ae14-47a2-a99e-35126c705ef9.jpg)
-
 We then combined Year/Month/Day columns into 1 date column and set it as our new index, before exporting our cleaned dataset for analysis.
-
-![Index](https://user-images.githubusercontent.com/128040899/233838985-d6e4c909-3bb8-44b2-a96f-a6ab51268e5e.jpg)
 
 # 3. Exploratory Data Analysis
 
@@ -41,11 +37,7 @@ Singapore's rainfall distribution contains as annual trend, with high amount of 
 - Nov to Jan (NE Monsoon)
 - May to Jul (SW Monsoon)
 
-![Monsoon](https://user-images.githubusercontent.com/128040899/233784067-8a0a8dad-642b-4350-b30a-33c763086054.jpg)
-
 3b. Studying Annual Trend
-
-![Outliers](https://user-images.githubusercontent.com/128040899/233784190-92fd6915-3983-4703-a263-64f9c256a045.jpg)
 
 We then analyse our time series data for this trend. First we removed outliers that may affect our analysis. We've identified outliers to be daily rainfall observations exceeding 100mm.
 
@@ -69,10 +61,6 @@ We then study the correlationship of other variables (Temperature and Humidity) 
 - As Mean Temperature ↓, Rainfall ↑
 - As Mean Humidity ↑, Rainfall ↑
 
-Note that this is not always the case, and we confirm our theory by checking their graphical representation using pairplots. We saw that there may be days when Mean Temperature is low, but Rainfall is low as well. The same can be said for Mean Humidity.
-
-![PairPlot](https://user-images.githubusercontent.com/128040899/233784130-53f2ac1c-3131-428f-8c85-4219b779cce0.jpg)
-
 We then exported our dataset with outliers removed for Machine Learning.
 
 # 4. Machine Learning
@@ -81,17 +69,11 @@ We then exported our dataset with outliers removed for Machine Learning.
 
 Since we are predicting into the future, our needs to learn the data's dependence on past observations to give us a better prediction. Hence we cannot split our data into train/test sets randomly like any typical linear regression problems. We've used SkLearn's Time Series Split to fulfill our purpose.
 
-![KFoldVSTimeSeriesSplit](https://user-images.githubusercontent.com/128040899/233784143-2e9e1770-f5bb-4309-bf5c-63a8cfe9240b.png)
-
 In Time Series Split, our dataset is spliced into N folds. Each fold contains a train dataset of increased time interval from the previous fold, and a test set with fixed time interval (1 Year in our context). Each fold other than the 1st one successively trains the test dataset of the previous fold to learn their dependence of past observations. Note that this is different from K-Fold Cross Validation, which splits data into K random folds, and uses the (K+1) Fold as the test set on each split. The train set of each fold also has a fixed time interval, unlike the one from Time Series Fold.
-
-After trying different number of folds for training, we've decided that 9 folds gave us the best model performance (RMSE) and most consistent performance across the folds.
 
 4b. Choice of Machine Learning Model
 
 We noticed from our EDA that although our dataset contains a seasonal trend across each year, its pattern is not entirely consistent. For example, the rainfall is substantially low between Aug to Sep 2022 and high between Oct to Dec 2022, but high between Aug to Sep 2021 and slight lower in Oct to Dec 2021.
-
-![Pattern](https://user-images.githubusercontent.com/128040899/233784167-8a306437-62c9-41e6-bd4c-7e5c1191e656.jpg)
 
 Due to these pattern discrepancies that have no linear relationship, we felt that Linear Regression may not give us a good prediction. Therefore, we've decided to employ eXtreme Gradient Boosting (or XGBoost) to tackle this problem. XGBoost works by iteratively adding decision trees (known as boosting rounds) and using gradient boosting to correct errors and learn pattern differences in data. It also contains certain features that control overfitting of our data, such as limiting the depth of a tree and setting early stopping rounds when our model performance does not improve. It is known to be effective when a dataset becomes complex or has nonlinear pattern. 
 
@@ -111,7 +93,6 @@ We've trained 4 different versions of dataset and obtained their RMSEs
 - Smoothed over 15 Days (RMSE: 11.50)
 - Smoothed over 30 Days (RMSE: 11.35)
 
-![No Lag Graph A](https://user-images.githubusercontent.com/128040899/233784252-33fedae7-35a6-47ec-b5c5-a17c57b3bd6a.jpg)
 ![No Lag Graph B](https://user-images.githubusercontent.com/128040899/233784255-f4729d0d-43b7-4169-9fcb-dfe94049af12.jpg)
 
 Seems like smoothing over 30 days gave us the best performance. We predicted SG's rainfall 1 year ahead from 1 Apr 23 (See Notebook for prediction graphs), but our time series graph does not look anything close to the one from EDA.
@@ -174,10 +155,6 @@ Outputs
 
     Residual water requirements adjusted for predicted rainfall.
     
- ![Ask](https://user-images.githubusercontent.com/128040899/233784279-b6433ce5-f5c9-4a9e-837e-bac301c94a5f.jpg)
-
-In our example, we input 10mm as our crop's daily irrigation requirements. The smart sprinkler system forecasted a daily water requirement of ~3.8mm for the 1st week of Apr to supplement daily rainfall (See Notebook for bar charts on other forecasting windows). Through this Hypothetical Sprinkler System, we've discovered that we can save more water if a sprinkler system has informed data on the irrigation requirements for crops, rather than operating solely based on human commands.
-
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
 # 5. Area for Improvement
