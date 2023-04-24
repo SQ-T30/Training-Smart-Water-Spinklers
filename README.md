@@ -81,8 +81,6 @@ Due to these pattern discrepancies that have no linear relationship, we felt tha
 
 Recall from the EDA section that our dataset is noisy due to daily rainfall fluctuations, and these noises does not add any meaning to our prediction. We've used the same moving average technique from EDA on our train data, to monitor how our model performs throughout the training. We've also tried averaging over windows of 7, 15 and 30 days to see which window gives us the best performance. (As we are studying seasonal trend across different months, averaging beyond 30 days will change the seasonal trend of our dataset)
 
-![Smoothing](https://user-images.githubusercontent.com/128040899/233784244-c20da88b-8ae0-4c3a-878d-085d7ca17ff1.jpg)
-
 (Caution: As we are evaluating our test data's performance, we must use actual data for the test set and not smooth them out. Otherwise we would be deceiving ourselves with the results.)
 
 We've trained 4 different versions of dataset and obtained their RMSEs
@@ -155,18 +153,15 @@ Outputs
     
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
-# 5. Area for Improvement
 
-Our forecasted water requirements implied that it will rain everyday within the window of prediction. This may not be the case in reality, and it happened because we did a moving average of 30 days, effectively removing all zero values in our training set. To measure the probability of rain happening, we need other predictors such as clouds and wind movements. However, that will be another type of weather forecasting which is out of our project's scope.
-
-# 6. Takeaways from This Project
+# 5. Takeaways from This Project
 
 - During data collection, we noticed that Singapore experiences higher annual rainfall compared to countries in the tropical regions. This is because we are situated on the equator and around waters. Hence we expect our model to forecast higher water requirements for crops due to the decreased amount of rainfall in these countries.
 - Notice from our EDA that although Temperature and Humidity have correlation with Rainfall, adding them to our model did not improve its performance.  We then learnt that even if the temperature is low, there may be a lack of moisture in our atmosphere, an important ingredient for precipitation. Also, even as humidity is high, it simply means a high amount of moisture in the air, and does not guarantee high rainfall. Precipitation is also affected by convection activity which brings moisture up in the air, and condensation of water vapors forming clouds. These clouds then produce rain when the water droplets become too much for them to hold. 
 - Forecasting rainfall can have a wide range of applications beyond just benefitting agriculture. The ability to accurately predict rainfall patterns can aid in the strategic placement of reservoirs and hydroelectric power plants, which can have a significant impact on energy production. Additionally, accurate forecasting can help with flood control efforts by allowing the government to better prepare for potential flooding and mitigate its impacts efficiently. Lastly, it might benefit wildlife conservation efforts, as changes in rainfall patterns can affect natural habitats and ecosystems. Therefore, accurate rainfall forecasting can play an important role in decision-making for a variety of sectors beyond just agriculture.
 
 
-# 7. References
+# 6. References
 
 Meterological Service Singapore. Climate of Singapore
 www.weather.gov.sg/climate-climate-of-singapore/
