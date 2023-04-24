@@ -66,7 +66,7 @@ We then exported our dataset with outliers removed for Machine Learning.
 
 Since we are predicting into the future, our needs to learn the data's dependence on past observations to give us a better prediction. Hence we cannot split our data into train/test sets randomly like any typical linear regression problems. We've used SkLearn's Time Series Split to fulfill our purpose.
 
-In Time Series Split, our dataset is spliced into N folds. Each fold contains a train dataset of increased time interval from the previous fold, and a test set with fixed time interval (1 Year in our context). Each fold other than the 1st one successively trains the test dataset of the previous fold to learn their dependence of past observations. Note that this is different from K-Fold Cross Validation, which splits data into K random folds, and uses the (K+1) Fold as the test set on each split. The train set of each fold also has a fixed time interval, unlike the one from Time Series Fold.
+In Time Series Split, our dataset is spliced into N folds. Each fold contains a train dataset of increased time interval from the previous fold, and a test set with fixed time interval (1 Year in our context). Each fold other than the 1st one successively trains the test dataset of the previous fold to learn their dependence of past observations. 
 
 4b. Choice of Machine Learning Model
 
