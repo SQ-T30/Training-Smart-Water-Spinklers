@@ -138,16 +138,7 @@ The performance of all the 30 day smoothed sets tend to outperform their other c
 
 4e. Testing Our Model on a Hypothetical Smart Water Sprinkler System
 
-Back to our problem motivation, we want to input these daily predicted values into our smart water sprinkler system. We've created a hypothetical smart water sprinkler system that has the following inputs and outputs.
-
-Inputs
-
-    Crop's daily irrigation requirements (From Human Input)
-    Predicted daily rainfall for 1 year (From our Machine Learning Model)
-
-Outputs
-
-    Residual water requirements adjusted for predicted rainfall.
+Back to our problem motivation, we've created a hypothetical smart water sprinkler system that forecasts water requirements based on crop's requirement and predicted rainfall data.
     
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
