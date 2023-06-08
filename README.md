@@ -1,12 +1,8 @@
 # Forecasting Rainfall to Optimise Smart Water Sprinklers
 
-Collaborators
-- Aaron Toh Sheng Rong: Problem Motivation, Data Collection, Presentation
-- Teo Shao Qi: EDA, Machine Learning
-
 # 1. Problem Motivation
 
-Water is precious and finite, especially in Singapore. With only 1% of its land area used for collecting rainwater, Singapore has to rely heavily on imported water from neighboring countries, such as Malaysia. However, this reliance on imported water has proven to be precarious and unreliable. If Singapore fails to improve water efficiency and diversify its water sources, experts have estimated that it will face a water scarcity challenge by 2030.  
+Water is precious and finite, especially in Singapore. With only 1% of its land area used for collecting rainwater, Singapore has to rely heavily on imported water from neighboring countries, such as Malaysia. However, this reliance on imported water has proven to be precarious and unreliable. If Singapore fails to improve water efficiency and diversify its water sources, experts have estimated that it will face a water scarcity challenge by 2030. 
 
 With limited water supply and growing water demand, we must explore every avenue to optimise our water usage. Smart irrigation techniques, such as drip irrigation and weather-based controllers, can significantly reduce water wastage in landscaping and agriculture by adjusting watering schedules based on weather forecasts. One way we can do this is by predicting rainfall and guiding smart water sprinklers to reduce water usage. 
 
@@ -143,13 +139,6 @@ The performance of all the 30 day smoothed sets tend to outperform their other c
 Back to our problem motivation, we've created a hypothetical smart water sprinkler system that forecasts water requirements based on crop's requirement and predicted rainfall data.
     
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
-
-
-# 5. Takeaways from This Project
-
-- During data collection, we noticed that Singapore experiences higher annual rainfall compared to countries in the tropical regions. This is because we are situated on the equator and around waters. Hence we expect our model to forecast higher water requirements for crops due to the decreased amount of rainfall in these countries.
-- Notice from our EDA that although Temperature and Humidity have correlation with Rainfall, adding them to our model did not improve its performance.  We then learnt that even if the temperature is low, there may be a lack of moisture in our atmosphere, an important ingredient for precipitation. Also, even as humidity is high, it simply means a high amount of moisture in the air, and does not guarantee high rainfall. Precipitation is also affected by convection activity which brings moisture up in the air, and condensation of water vapors forming clouds. These clouds then produce rain when the water droplets become too much for them to hold. 
-- Forecasting rainfall can have a wide range of applications beyond just benefitting agriculture. The ability to accurately predict rainfall patterns can aid in the strategic placement of reservoirs and hydroelectric power plants, which can have a significant impact on energy production. Additionally, accurate forecasting can help with flood control efforts by allowing the government to better prepare for potential flooding and mitigate its impacts efficiently. Lastly, it might benefit wildlife conservation efforts, as changes in rainfall patterns can affect natural habitats and ecosystems. Therefore, accurate rainfall forecasting can play an important role in decision-making for a variety of sectors beyond just agriculture.
 
 
 # 6. References
