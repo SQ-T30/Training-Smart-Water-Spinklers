@@ -141,7 +141,7 @@ Back to our problem motivation, we've created a hypothetical smart water sprinkl
 ![Forecast](https://user-images.githubusercontent.com/128040899/233784272-3899dbb6-c1ca-43cd-a594-c28dd8bfcca4.jpg)
 
 
-# 6. References
+# 5. References
 
 Meterological Service Singapore. Climate of Singapore
 www.weather.gov.sg/climate-climate-of-singapore/
